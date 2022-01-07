@@ -1,0 +1,29 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:kesearch="http://typo3.org/ns/Tpwd\KeSearch\ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:spaceless>
+    <f:format.raw>
+        <f:format.json value="{
+            previous: '{f:uri.typolink(parameter:\'{kesearch:link(piVars:\"{page: pagination.previous}\",keepPiVars:1,uriOnly:1)}\',absolute:1)}',
+            currentPage: '{f:uri.typolink(parameter:\'{kesearch:link(piVars:\"{page: pagination.currentPage}\",keepPiVars:1,uriOnly:1)}\',absolute:1)}',
+            next: '{f:uri.typolink(parameter:\'{kesearch:link(piVars:\"{page: pagination.next}\",keepPiVars:1,uriOnly:1)}\',absolute:1)}',
+            pages: '{f:render(section: \'Pages\', arguments: \'{_all}\') -> headless:format.json.decode()}'
+        }"/>
+    </f:format.raw>
+</f:spaceless>
+
+<f:section name="Pages">
+    <f:spaceless>
+        [<f:for each="{pagination.pages}" as="page" iteration="pageIterator">
+        <f:format.raw>
+            <f:format.json value="{
+              page: page,
+              link: '{f:uri.typolink(parameter:\'{kesearch:link(piVars:\"{page: page}\",keepPiVars:1,uriOnly:1)}\',absolute:1)}',
+              current: '{f:if(condition: \'{page} == {pagination.currentPage}\',then:1,else:0)}'
+            }"/>
+        </f:format.raw>
+        {f:if(condition: pageIterator.isLast, else: ',')}
+    </f:for>]
+    </f:spaceless>
+</f:section>

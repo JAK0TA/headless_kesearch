@@ -1,0 +1,34 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{numberofresults} > 0">
+    <f:then>
+        <f:if condition="{numberofresults} > {conf.resultsPerPage}">
+            <f:then>
+                <f:spaceless>
+                    <f:format.raw>
+                        <f:format.json value="{
+                            start: pagebrowser.start,
+                            end: pagebrowser.end,
+                            total: pagebrowser.total,
+                            pagination: '{pagebrowser.pages_list -> headless:format.json.decode()}'
+                        }"/>
+                    </f:format.raw>
+                </f:spaceless>
+            </f:then>
+            <f:else>
+                <f:spaceless>
+                    <f:format.raw>
+                        <f:format.json value="{}"/>
+                    </f:format.raw>
+                </f:spaceless>
+            </f:else>
+        </f:if>
+    </f:then>
+    <f:else>
+        <f:format.json value="{}"/>
+    </f:else>
+</f:if>
+
+
+

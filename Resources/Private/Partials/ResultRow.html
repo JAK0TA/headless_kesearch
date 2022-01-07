@@ -1,0 +1,18 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:spaceless>
+    <f:format.raw>
+        <f:format.json value="{
+        type: resultrow.type,
+        number: resultrow.number,
+        title: resultrow.title,
+        url: '{f:uri.typolink(parameter:\'{resultrow.url}\',absolute:1)}',
+        date_timestamp: resultrow.date_timestamp,
+        tags: resultrow.tags,
+        teaser: resultrow.teaser
+    }"/>
+    </f:format.raw>
+</f:spaceless>
+
+</html>

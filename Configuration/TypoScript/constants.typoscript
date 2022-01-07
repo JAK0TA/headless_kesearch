@@ -1,0 +1,5 @@
+plugin.tx_kesearch {
+  templateRootPath = EXT:headless_kesearch/Resources/Private/Templates/
+  partialRootPath = EXT:headless_kesearch/Resources/Private/Partials/
+  layoutRootPath = EXT:headless_kesearch/Resources/Private/Layouts/
+}
