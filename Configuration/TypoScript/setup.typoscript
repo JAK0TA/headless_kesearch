@@ -1,3 +1,5 @@
+@import 'EXT:ke_search/Configuration/TypoScript/setup.typoscript'
+
 tt_content.list =< lib.contentElementWithHeader
 tt_content.list {
   fields {
@@ -7,8 +9,8 @@ tt_content.list {
         data {
           key.field = list_type
 
-          kesearch_pi2 = USER
-          kesearch_pi2 {
+          ke_search_pi2 = USER
+          ke_search_pi2 {
             userFunc = Tpwd\KeSearch\Plugins\ResultlistPlugin->main
             view < plugin.tx_kesearch_pi2.view
           }
