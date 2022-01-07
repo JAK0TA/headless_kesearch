@@ -6,7 +6,7 @@ Extension requires TYPO3 in version at least 9.5.
 
 ## TYPO3 Installation
 Install extension using composer\
-``composer require friendsoftypo3headless/headless_kesearch``
+``composer require friendsoftypo3headless/headless-kesearch``
 
 and then, include TypoScript template, and you are ready to go.
 
