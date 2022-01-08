@@ -1,6 +1,6 @@
 <?php
 
-defined('TYPO3') || die();
+defined('TYPO3_MODE') || die();
 
 call_user_func(function () {
     // Default TypoScript for Headless Faceted Search (ke_search)
