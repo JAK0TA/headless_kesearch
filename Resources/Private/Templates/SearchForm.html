@@ -8,15 +8,15 @@
                 method: 'get',
                 id: 'form_kesearch_pi1',
                 name: 'form_kesearch_pi1',
-                action: '{f:uri.page(pageUid: targetpage)}',
-                resetUrl: resetUrl,
-                fields: '{f:render(section: \'Fields\', arguments: \'{_all}\') -> headless:format.json.decode()}'
+                action: '{f:uri.page(pageUid: targetpage, absolute: 1)}',
+                resetUrl: '{f:uri.typolink(parameter:\'{resetUrl}\',absolute:1)}',
+                fields: '{f:render(section: \'FormFields\', arguments: \'{_all}\') -> headless:format.json.decode()}'
             }
         }"/>
     </f:format.raw>
 </f:spaceless>
 
-<f:section name="Fields">
+<f:section name="FormFields">
     <f:spaceless>
         <f:format.raw>
             [
@@ -98,7 +98,6 @@
 
             <f:if condition="{filters}">
                 <f:render partial="Filters" arguments="{conf: conf, numberofresults: numberofresults, resultrows: resultrows, filters: filters}" />
-                ,
             </f:if>
 
             <f:format.json value="{

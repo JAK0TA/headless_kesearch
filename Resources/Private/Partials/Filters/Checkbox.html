@@ -6,11 +6,11 @@
 <f:spaceless>
     <f:format.raw>
         <f:format.json value="{
-            type: 'select',
+            type: 'checkbox',
             id: filter.id,
-            name: filter.name,
+            title: filter.title,
             disabled: '{f:if(condition:\'{filter.optionCount} == 0\', then: 1, else: 0)}',
-            options: '{f:render(section: \'Options\', arguments: \'{options: filter.options}\') -> headless:format.json.decode()}'
+            options: '{f:render(section:\'Options\', arguments:\'{options: filter.checkboxOptions}\') -> headless:format.json.decode()}'
         }"/>
     </f:format.raw>
 </f:spaceless>
@@ -20,9 +20,13 @@
         <f:format.raw>
             [<f:for each="{options}" as="option" iteration="optionIterator">
                 <f:format.json value="{
+                    id: option.id,
                     title: option.title,
+                    tag: option.tag,
                     value: option.value,
+                    name: option.key,
                     selected: '{f:if(condition: option.selected, then: 1, else: 0)}',
+                    disabled: '{f:if(condition: option.disabled, then: 1, else: 0)}',
                     results: option.results
                 }"/>
                 {f:if(condition: optionIterator.isLast, else: ',')}
