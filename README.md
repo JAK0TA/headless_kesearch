@@ -12,5 +12,5 @@ and then, include TypoScript template, and you are ready to go.
 
 ### Developers involved in the project
 
-- Sven Petersen
+- Sven Petersen (HardAnders GbR)
 - Niels Seelhöfer
