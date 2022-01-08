@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xsd.helmut-hummel.de/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true"
+>
+
+<f:if condition="{conf.showSortInFrontend}">
+    <f:if condition="{conf.sortByVisitor}">
+        <f:spaceless>
+            <f:format.raw>
+                <f:format.json value="{
+                    label: '{f:translate(key:\'LLL:EXT:ke_search/Resources/Private/Language/locallang_searchbox.xlf:label_sort\')}',
+                    sortingLinks: '{f:render(section:\'SortingLinks\', arguments:\'{sortingLinks: sortingLinks}\') -> headless:format.json.decode()}'
+                }"/>
+            </f:format.raw>
+        </f:spaceless>
+    </f:if>
+</f:if>CalDate.html
+
+<f:section name="SortingLinks">
+    <f:spaceless>
+        <f:format.raw>
+            [<f:for each="{sortingLinks}" as="sortingLink" iteration="sortingLinkIterator">
+                <f:format.json value="{
+                    field: sortingLink.field,
+                    link: '{f:uri.typolink(parameter:\'{sortingLink.urlOnly}\',absolute:1)}',
+                    label: sortingLink.label,
+                    class: sortingLink.class
+                }"/>
+                {f:if(condition: sortingLinkIterator.isLast, else: ',')}
+            </f:for>]
+        </f:format.raw>
+    </f:spaceless>
+</f:section>
+
+</html>

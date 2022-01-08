@@ -2,7 +2,7 @@
 This extension provides integration to headless extension with "Faceted Search" (ke_search) extension.
 
 ## Requirements
-Extension requires TYPO3 in version at least 9.5.
+Extension requires TYPO3 in version at least 10.4.
 
 ## TYPO3 Installation
 Install extension using composer\

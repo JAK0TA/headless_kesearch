@@ -9,6 +9,26 @@ tt_content.list {
         data {
           key.field = list_type
 
+          ke_search_pi1 = USER
+          ke_search_pi1 {
+            userFunc = Tpwd\KeSearch\Plugins\SearchboxPlugin->main
+            view < plugin.tx_kesearch_pi1.view
+          }
+        }
+      }
+    }
+  }
+}
+
+tt_content.list =< lib.contentElementWithHeader
+tt_content.list {
+  fields {
+    content {
+      fields {
+        data = CASE
+        data {
+          key.field = list_type
+
           ke_search_pi2 = USER
           ke_search_pi2 {
             userFunc = Tpwd\KeSearch\Plugins\ResultlistPlugin->main
@@ -19,3 +39,4 @@ tt_content.list {
     }
   }
 }
+

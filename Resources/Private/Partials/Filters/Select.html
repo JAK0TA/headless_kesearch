@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xsd.helmut-hummel.de/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true"
+>
+
+<f:spaceless>
+    <f:format.raw>
+        <f:format.json value="{
+            type: 'select',
+            id: filter.id,
+            name: filter.name,
+            disabled: '{f:if(condition:\'{filter.optionCount} == 0\', then: 1, else: 0)}',
+            options: '{f:render(section: \'Options\', arguments: \'{options: filter.options}\') -> headless:format.json.decode()}'
+        }"/>
+    </f:format.raw>
+</f:spaceless>
+
+<f:section name="Options">
+    <f:spaceless>
+        <f:format.raw>
+            [<f:for each="{options}" as="option" iteration="optionIterator">
+                <f:format.json value="{
+                    title: option.title,
+                    value: option.value,
+                    selected: '{f:if(condition: option.selected, then: 1, else: 0)}',
+                    results: option.results
+                }"/>
+                {f:if(condition: optionIterator.isLast, else: ',')}
+            </f:for>
+            ]
+        </f:format.raw>
+    </f:spaceless>
+</f:section>
