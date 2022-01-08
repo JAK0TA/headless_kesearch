@@ -6,7 +6,7 @@
         <f:format.json value="{
         type: resultrow.type,
         number: '{f:if(condition: conf.resultsNumeration,then: \'{resultrow.number}.\')}',
-        title: resultrow.title,
+        title: '{resultrow.title -> f:format.striptags()}',
         url: '{f:uri.typolink(parameter:\'{resultrow.url}\',absolute:1)}',
         date_timestamp: resultrow.date_timestamp,
         tags: '{f:if(condition: conf.showTags,then: resultrow.tags)}',
