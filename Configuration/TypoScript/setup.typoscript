@@ -40,3 +40,23 @@ tt_content.list {
   }
 }
 
+tt_content.list =< lib.contentElementWithHeader
+tt_content.list {
+  fields {
+    content {
+      fields {
+        data = CASE
+        data {
+          key.field = list_type
+
+          ke_search_pi3 = USER
+          ke_search_pi3 {
+            userFunc = Tpwd\KeSearch\Plugins\SearchboxPlugin->main
+            view < plugin.tx_kesearch_pi3.view
+          }
+        }
+      }
+    }
+  }
+}
+
