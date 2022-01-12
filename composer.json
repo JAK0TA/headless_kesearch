@@ -2,6 +2,7 @@
   "name": "friendsoftypo3headless/headless-kesearch",
   "type": "typo3-cms-extension",
   "description": "This extension provides integration with ke_search to output content from TYPO3 in JSON format.",
+  "version": "1.2.0",
   "keywords": [
     "TYPO3",
     "headless",
