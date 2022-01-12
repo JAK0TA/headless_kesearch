@@ -5,10 +5,10 @@
     <f:format.raw>
         <f:format.json value="{
         type: resultrow.type,
-        number: '{f:if(condition: conf.resultsNumeration,then: \'{resultrow.number}.\')}',
+        number: '{f:if(condition: conf.resultsNumeration, then: resultrow.number)}',
         title: '{resultrow.title -> f:format.striptags()}',
-        url: '{f:uri.typolink(parameter:\'{resultrow.url}\',absolute:1)}',
-        date_timestamp: resultrow.date_timestamp,
+        url: '{f:uri.typolink(parameter: resultrow.url, absolute:1)}',
+        date_timestamp: '{f:if(condition: conf.showDate, then:resultrow.date_timestamp)}',
         tags: '{f:if(condition: conf.showTags,then: resultrow.tags)}',
         teaser: '{resultrow.teaser -> f:format.striptags()}',
         teaser_icon: '{f:render(section:\'typeIconOrPreviewImage\', arguments:\'{icon: resultrow.typeIconPath, filePreviewId: resultrow.filePreviewId, treatIdAsReference:resultrow.treatIdAsReference, iconConf: conf.showTypeIcon}\') -> headless:format.json.decode()}'

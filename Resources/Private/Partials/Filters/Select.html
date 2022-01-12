@@ -9,6 +9,7 @@
             type: 'select',
             id: filter.id,
             name: filter.name,
+            title: filter.title,
             disabled: '{f:if(condition:\'{filter.optionCount} == 0\', then: 1, else: 0)}',
             options: '{f:render(section: \'Options\', arguments: \'{options: filter.options}\') -> headless:format.json.decode()}'
         }"/>
@@ -22,7 +23,7 @@
                 <f:format.json value="{
                     title: option.title,
                     value: option.value,
-                    selected: '{f:if(condition: option.selected, then: 1, else: 0)}',
+                    selected: option.selected,
                     results: option.results
                 }"/>
                 {f:if(condition: optionIterator.isLast, else: ',')}

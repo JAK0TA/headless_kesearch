@@ -2,9 +2,11 @@
       data-namespace-typo3-fluid="true">
 
 <f:spaceless>
-    <f:for each="{resultrows}" as="resultrow" iteration="resultIterator">
-        <f:render partial="ResultRow" arguments="{conf: conf, resultrow: resultrow}"/>
-        {f:if(condition: resultIterator.isLast, else: ',')}
-    </f:for>
+    <f:format.raw>
+        [<f:for each="{resultrows}" as="resultrow" iteration="resultIterator">
+            <f:render partial="ResultRow" arguments="{conf: conf, resultrow: resultrow}"/>
+            {f:if(condition: resultIterator.isLast, else: ',')}
+        </f:for>]
+    </f:format.raw>
 </f:spaceless>
 </html>

@@ -10,7 +10,7 @@
             id: filter.id,
             title: filter.title,
             disabled: '{f:if(condition:\'{filter.optionCount} == 0\', then: 1, else: 0)}',
-            options: '{f:render(section:\'Options\', arguments:\'{options: filter.checkboxOptions}\') -> headless:format.json.decode()}'
+            options: '{f:render(section:\'Options\', arguments:\'{options: filter.options}\') -> headless:format.json.decode()}'
         }"/>
     </f:format.raw>
 </f:spaceless>
@@ -26,7 +26,7 @@
                     value: option.value,
                     name: option.key,
                     selected: '{f:if(condition: option.selected, then: 1, else: 0)}',
-                    disabled: '{f:if(condition: option.disabled, then: 1, else: 0)}',
+                    disabled: option.disabled,
                     results: option.results
                 }"/>
                 {f:if(condition: optionIterator.isLast, else: ',')}

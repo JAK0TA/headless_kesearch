@@ -2,23 +2,45 @@
       data-namespace-typo3-fluid="true">
 
 <f:spaceless>
-{
-    "queryTime": {queryTime},
-    "numberofresults": {numberofresults},
-    "wordsTooShort": {wordsTooShort},
-    <f:if condition="{resultListAdditionalRawContent}">
-        "resultListAdditionalRawContent": "{resultListAdditionalRawContent}",
-    </f:if>
-    "page_browser": <f:render partial="PageBrowser" arguments="{conf: conf, numberofresults:numberofresults, pagebrowser:pagebrowser}" />,
-    "results": [<f:render partial="ResultRows" arguments="{
-        conf: conf,
-        numberofresults: numberofresults,
-        resultrows: resultrows,
-        sortingLinks: sortingLinks,
-        pagebrowser:pagebrowser,
-        queryTime:queryTime,
-        queryTimeText:queryTimeText
-    }" />]
-}
+    <f:format.raw>
+        <f:format.json value="{
+            queryTime: '{f:if(condition: conf.showQueryTime, then: queryTime)}',
+            numberofresults: numberofresults,
+            wordsTooShort: wordsTooShort,
+            resultListAdditionalRawContent: '{f:if(condition: resultListAdditionalRawContent, then: resultListAdditionalRawContent)}',
+            page_browser: '{f:render(partial: \'PageBrowser\', arguments: \'{conf: conf, numberofresults: numberofresults, pagebrowser: pagebrowser }\') -> headless:format.json.decode()}',
+            results: '{f:render(section: \'Results\', arguments: \'{_all}\') -> headless:format.json.decode()}'
+        }"/>
+    </f:format.raw>
 </f:spaceless>
+
+<f:section name="Results">
+    <f:if condition="{conf.showTextInsteadOfResults}">
+        <f:then>
+            <f:spaceless>
+                <f:format.raw>
+                    <f:format.json value="{
+                        result: '{conf.textForResults -> f:format.striptags()}'
+                    }"/>
+                </f:format.raw>
+            </f:spaceless>
+        </f:then>
+        <f:else>
+            <f:spaceless>
+                <f:format.raw>
+                [<f:render partial="ResultRows" arguments="{
+                    conf: conf,
+                    numberofresults: numberofresults,
+                    resultrows: resultrows,
+                    sortingLinks: sortingLinks,
+                    pagebrowser:pagebrowser,
+                    queryTime:queryTime,
+                    queryTimeText:queryTimeText
+                }" />]
+                </f:format.raw>
+            </f:spaceless>
+      </f:else>
+    </f:if>
+</f:section>
+
 </html>
