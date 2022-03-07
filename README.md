@@ -1,3 +1,5 @@
+![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2.svg)
+
 # TYPO3 Extension "headless_kesearch" - Provides fluid templates to render proper JSON from EXT:ke_search
 This extension provides integration to headless extension with "Faceted Search" (ke_search) extension.
 
