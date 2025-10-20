@@ -8,16 +8,13 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'sven@hardanders.de',
     'category' => 'fe',
     'internal' => '',
-    'version' => '1.1.1',
+    'version' => '2.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '10.4.0-11.5.99',
-            'frontend' => '10.4.0-11.5.99'
+            'typo3' => '12.4.0-12.5.99',
+            'frontend' => '12.4.0-12.5.99',
         ],
         'conflicts' => [],
-        'suggests' => [
-            'headless' => '2.6.0-3.0.99',
-            'ke_search' => '4.2.0-4.2.99'
-        ]
+        'suggests' => [],
     ],
 ];
